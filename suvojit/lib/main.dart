@@ -67,36 +67,40 @@ class _MyHomePageState extends State<MyHomePage> {
       Center(
         child: Text('Loading....'),
       ) :
-      ListView(
-      children:<Widget>[
-      Container(
-      padding: EdgeInsets.all(2),
-        height: 120,
-        child: Card(
-            child: Row(
-                children: <Widget>[
-                  Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTISZvzSa4LFRqPdDrF2JiWrBDagcvCXC1Gsy8anOTfD_ECXw5v&usqp=CAU",
-                      height: 100,
-                      width: 100),
-                  Expanded(
-                      child: Container(
-                          padding: EdgeInsets.all(5),
-                          child: Column(
-                            children: <Widget>[
-                              Text(productresp[0].categoryName,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold
-                                  )),
-                              Text("Price: RS. 30"),
-                            ],
+      ListView.builder(
+          itemCount: productresp.length,
+          itemBuilder: (BuildContext context, int index){
+            return Container(
+                padding: EdgeInsets.all(2),
+                height: 120,
+                child: Card(
+                    child: Row(
+                        children: <Widget>[
+                            FadeInImage.assetNetwork(
+                                placeholder: 'assets/images/preloader.gif',
+                                height: 100,
+                                width: 100,
+                                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTISZvzSa4LFRqPdDrF2JiWrBDagcvCXC1Gsy8anOTfD_ECXw5v&usqp=CAU"),
+                          Expanded(
+                              child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(productresp[index].categoryName,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold
+                                          )),
+                                      Text("Price: RS. 30"),
+                                    ],
+                                  )
+                              )
                           )
-                      )
-                  )
-                ]
-            )
-        ))
-      ]
-    ),
+                        ]
+                    )
+                )
+            );
+          }
+      ),
       drawer: Drawer(
         child: drawesection
       ),
