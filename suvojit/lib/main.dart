@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:suvojit/service.dart';
 import 'package:suvojit/productModel.dart';
 import 'dart:convert';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() => runApp(MyApp());
 
@@ -60,6 +61,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    bottomNavigationBar: CurvedNavigationBar(
+          height: 50.0,
+          items: <Widget>[
+            Icon(Icons.add, size: 30),
+            Icon(Icons.list, size: 30),
+            Icon(Icons.compare_arrows, size: 30),
+            Icon(Icons.call_split, size: 30),
+            Icon(Icons.perm_identity, size: 30),
+          ],
+          color: Colors.white,
+          buttonBackgroundColor: Colors.white,
+          backgroundColor: Colors.blueAccent,
+          animationCurve: Curves.easeInOut,
+          animationDuration: Duration(milliseconds: 500)
+        ),
       appBar: AppBar(
         title: Text('suvojit'),
       ),
@@ -74,6 +90,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.all(2),
                 height: 120,
                 child: Card(
+                    elevation: 0,
+                    color: Colors.indigo[50],
                     child: Row(
                         children: <Widget>[
                             FadeInImage.assetNetwork(
@@ -103,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       drawer: Drawer(
         child: drawesection
-      ),
+      )
   );
  }
 
